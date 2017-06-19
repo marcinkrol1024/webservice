@@ -14,20 +14,20 @@ import sages.bootcamp.git.webservice.service.GreetingService;
 @RestController
 public class GreetingApp {
 
-  public static void main(String[] args) {
-    SpringApplication.run(GreetingApp.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(GreetingApp.class, args);
+    }
 
-  @Autowired
-  private GreetingService greetingService;
+    @Autowired
+    private GreetingService greetingService;
 
-  @RequestMapping("/greeting")
-  public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-    return greetingService.greet(name);
-  }
+    @RequestMapping("/greeting")
+    public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return greetingService.greet(name);
+    }
 
-  @Bean
-  public GreetingService provideGreetingService() {
-    return new AggregateGreetingService(/* Tutaj umieszczamy swoje implementacje :) */);
-  }
+    @Bean
+    public GreetingService provideGreetingService() {
+        return new AggregateGreetingService((GreetingService) name -> "Hello " + name);
+    }
 }
