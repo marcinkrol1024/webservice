@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sages.bootcamp.git.webservice.service.AggregateGreetingService;
 import sages.bootcamp.git.webservice.service.GreetingService;
+import sages.bootcamp.git.webservice.service.JanSkibniewskiGreetingService;
 
 @SpringBootApplication
 @RestController
@@ -28,6 +29,6 @@ public class GreetingApp {
 
   @Bean
   public GreetingService provideGreetingService() {
-    return new AggregateGreetingService(/* Tutaj umieszczamy swoje implementacje :) */);
+    return new AggregateGreetingService(new JanSkibniewskiGreetingService());
   }
 }
