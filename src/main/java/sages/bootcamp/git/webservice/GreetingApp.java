@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sages.bootcamp.git.webservice.service.AggregateGreetingService;
+import sages.bootcamp.git.webservice.service.BlazejNorysGreetingService;
 import sages.bootcamp.git.webservice.service.GreetingService;
 import sages.bootcamp.git.webservice.service.LaryGreetingService;
 
@@ -30,5 +31,6 @@ public class GreetingApp {
   @Bean
   public GreetingService provideGreetingService() {
     return new AggregateGreetingService(new LaryGreetingService ());
+    return new AggregateGreetingService(new BlazejNorysGreetingService());
   }
 }
